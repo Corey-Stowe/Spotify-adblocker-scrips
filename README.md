@@ -1,4 +1,3 @@
-# Spotify-adblocker-scrips
 Please run scrips as administrator
 
 
