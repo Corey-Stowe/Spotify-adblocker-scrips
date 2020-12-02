@@ -3,7 +3,7 @@ call :RequestAdminElevation "%~dpfs0" %* || goto:eof
 mode con: cols=100 lines=50
 title -Spotify Adblock (by: Stowe)-
 echo +++++++++++++++++++++++++++++++++++++++++++++++++
-echo + -Script Adblock Spotify V 1.0.8-v1 +
+echo + -Script Adblock Spotify V 1.1.4.197 +
 echo + Test and make by @Corey-Stowe (2020/11/07)   +
 echo + Block spotify upgrade +
 echo
@@ -16,32 +16,38 @@ TASKKILL /IM Spotify.exe /F 2> nul
 copy %SystemRoot%\system32\drivers\etc\hosts %SystemRoot%\system32\drivers\etc\hosts.backup
 echo. >>"%SystemRoot%\system32\drivers\etc\hosts"
 echo. >>"%SystemRoot%\system32\drivers\etc\hosts"
-echo # ad block disabled Spotify update check>>"%SystemRoot%\system32\drivers\etc\hosts"
-echo 0.0.0.0 adclick.g.doublecklick.net>>"%SystemRoot%\system32\drivers\etc\hosts"
-echo 0.0.0.0 googleads.g.doubleclick.net>>"%SystemRoot%\system32\drivers\etc\hosts"
-echo 0.0.0.0 http://www.googleadservices.com>>"%SystemRoot%\system32\drivers\etc\hosts"
-echo 0.0.0.0 pubads.g.doubleclick.net>>"%SystemRoot%\system32\drivers\etc\hosts"
-echo 0.0.0.0 securepubads.g.doubleclick.net>>"%SystemRoot%\system32\drivers\etc\hosts"
-echo 0.0.0.0 pagead2.googlesyndication.com>>"%SystemRoot%\system32\drivers\etc\hosts"
-echo 0.0.0.0 spclient.wg.spotify.com>>"%SystemRoot%\system32\drivers\etc\hosts"
-echo 0.0.0.0 audio2.spotify.com>>"%SystemRoot%\system32\drivers\etc\hosts"
+echo # ad block and disabled Spotify update check>>"%SystemRoot%\system32\drivers\etc\hosts"
 echo 0.0.0.0 upgrade.spotify.com>>"%SystemRoot%\system32\drivers\etc\hosts"
 echo 0.0.0.0 www.spotify-desktop.com>>"%SystemRoot%\system32\drivers\etc\hosts"
 echo 0.0.0.0 sto3-accesspoint-a88.sto3.spotify.net>>"%SystemRoot%\system32\drivers\etc\hosts"
 echo 0.0.0.0 upgrade.scdn.co>>"%SystemRoot%\system32\drivers\etc\hosts"
 echo 0.0.0.0 prod.spotify.map.fastlylb.net>>"%SystemRoot%\system32\drivers\etc\hosts"
+echo 127.0.0.0 spclient.wg.spotify.com>>"%SystemRoot%\system32\drivers\etc\hosts"
+echo 127.0.0.0 www.google-analytics.com>>"%SystemRoot%\system32\drivers\etc\hosts"
+echo 127.0.0.0 cdn.hptos.firepit.tools>>"%SystemRoot%\system32\drivers\etc\hosts"
+echo 127.0.0.0 pagead2.googlesyndication.com>>"%SystemRoot%\system32\drivers\etc\hosts"
+echo 127.0.0.0 tpc.googlesyndication.com>>"%SystemRoot%\system32\drivers\etc\hosts"
+echo 127.0.0.0 b.scorecardresearch.com>>"%SystemRoot%\system32\drivers\etc\hosts"
+echo 127.0.0.0 securepubads.g.doubleclick.net>>"%SystemRoot%\system32\drivers\etc\hosts"
+echo 127.0.0.0 www.googletagservices.com>>"%SystemRoot%\system32\drivers\etc\hosts"
+echo 127.0.0.0 adservice.google.es>>"%SystemRoot%\system32\drivers\etc\hosts"
+echo 127.0.0.0 csi.gstatic.com>>"%SystemRoot%\system32\drivers\etc\hosts"
+echo 127.0.0.0 dntcl.qualaroo.com>>"%SystemRoot%\system32\drivers\etc\hosts"
+echo 127.0.0.0 platform-lookaside.fbsbx.com>>"%SystemRoot%\system32\drivers\etc\hosts"
+echo 127.0.0.0 s3.amazonaws.com>>"%SystemRoot%\system32\drivers\etc\hosts"
+echo 127.0.0.0 content-lht6-1.xx.fbcdn.net>>"%SystemRoot%\system32\drivers\etc\hosts"
 echo # >>"%SystemRoot%\system32\drivers\etc\hosts"
 cd %appdata%\Spotify\Apps
 del /f /q ad.spa
 IF NOT EXIST ad.spa echo. >ad.spa
 cd..
 Start Spotify.exe
-msg * ok!
+msg * Thành công|ok !
 exit
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 :RequestAdminElevation FilePath %* || goto:eof
 :: 
-:: By:   Stowe,     v1.0.8(1.0.0v1) - 2020/11/07 - Changed the admin rights test method from cacls to fltmc
+:: By:   Stowe,     v1.1.4.197 - 2020/11/07 - Changed the admin rights test method from cacls to fltmc
 :: Func: opens an admin elevation prompt. If elevated, runs everything after the function call, with elevated rights.
 :: Returns: -1 if elevation was requested
 ::           0 if elevation was successful
